@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>regstratsiya </title>
+    <style>
+        *{
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color:rgb(135, 155, 175);
+        }
+    
+        .container{
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            border: 1px solid black;
+         
+        }
+        h1{
+         font-family: cursive;            
+        }
+        .con_1{
+            margin: 130px 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+             align-items: center;
+             width: 400px;
+             height:400px;
+              border: 1px solid black;
+             box-shadow: 5px -5px 10px 5px black;
+             border-radius: 20px;
+             background-color: rgba(255, 255, 255, 0.3);
+        }
+        input{
+            
+            border-radius: 5px;
+            font-size: 19px;
+            padding: 5px 15px;
+            
+        }
+        input::placeholder{
+            color: black;
+            opacity: 0.5;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #submit{
+           font-family: monospace;
+           font-size: 20px;
+         padding: 13px 40px;
+         border-radius: 10px;
+         border: none;
+         background-color:  #4CAF50;
+         color: white;
+        }
+        .main{
+            width: 500px;
+            height: 200px;
+         
+        }
+        table{
+            font-family:  Georgia, 'Times New Roman', Times, serif;
+            color: black;
+            width: 600px;
+            height: 0px;
+            border: 1px solid black;
+            background-color: white;
+        }
+        table tr th{
+          
+            width: 200px;
+            height: 60px;
+            
+        }
+        .main{
+             margin: 130px 150px;
+     
+            
+        }
+        
+        #submit {
+       border: 1px solid black;
+     background-color: rgb(99, 142, 191);
+   }
+ #submit:active {
+	position:relative;
+	top:1px;
+    box-shadow: inset 0px 0px 10px 3px white;
+}
+p{
+    display: none;
+    color: red;
+    font-size: 19px;
+}
+h1{
+    text-align: center;
+    color: white;
+}
+#butn{
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: rgb(253, 84, 84);
+    border: 1px solid white;
+    color: white;
+}
+    
+ 
+    </style>
+</head>
+<body>
+    <form >
+    <div class="container">
+        <div class="con_1">
+          
+                 <h1>Yangi hodim qo'shish</h1>
+                 <input type="text" placeholder="Ismi !" required id="ism_1" >
+                 <input type="text" placeholder="Familiyasi !" required id="fam">
+                 <input type="number" placeholder="Oyligi $ !" required id="pul">
+                 <input type="password" placeholder="Admin parol !" required id="pas">
+                 <input type="password" placeholder="Admin parol" required id="pas" style="display: none;">
+                 <p id="p" style="font-size: 19px;">Tuliq kiriting !</p>
+                 <input id="submit" type="submit" value="Bazaga kiriting !">
+            
+        </div>
+        <div class="main">
+            <table border="1" cellpadding="0" cellspacing="0"  id="table">
+                <tr style="  border: 1px solid white; color: white; background-color: rgb(123, 80, 28);">
+                    <th >Ismi </th>
+                    <th>Familiyasi</th>
+                    <th>Oylik maoshi</th>
+                    <th>Bazadan o'chirish</th>
+                </tr>
+                <tr id="tr">
+                    <th >Olimjon</th>
+                    <th>Orifjonov</th>
+                    <th>$1000</th>
+                    <th><button id="butn">O'chirish</button></th>
+                </tr>
+               
+        </div>
+    </div>
+</form>
+<script>
+    
+    const table=document.querySelector('#table')
+    const submit=document.querySelector('#submit')
+    const ism_1=document.querySelector('#ism_1')
+    const fam=document.querySelector('#fam')
+    const pul=document.querySelector('#pul')
+    const pas=document.querySelector('#pas')
+    const p=document.querySelector('#p')
+    let yangi_element=document.createElement('p')
+    yangi_element.innerHTML="Iltimos formani tuliq tuldiring"
+    submit.addEventListener('click', function elem(){
+     if(ism_1.value=='' ,fam.value=='', pas.value==''){
+            p.style.display="flex"
+     } 
+     else{
+         if(pas.value==1111){
+           
+            p.style.fontsize= "30"
+            p.style.display="flex"
+             p.innerHTML="Bazaga qo'shildi"
+             p.style.color="green"
+            
+             table.insertAdjacentHTML('beforeEnd', `<tr> <th>${ism_1.value}</th> <th>${fam.value}</th><th>${"$"+pul.value}</th></tr>`);
+             ism_1.value='' ,fam.value='', pas.value='' ,pul.value=''
+            }
+               else{
+                p.style.display="flex"
+                p.innerHTML="Parol noto'g'ri"
+                p.style.color="red"
+                p.style.fontsize = "25px;"
+
+          
+         }
+     }
+    
+     ism_1.value='' ,fam.value='', pas.value='' ,pul.value=''
+
+   
+   })
+
+ 
+</script>
+</body>
+</html>
